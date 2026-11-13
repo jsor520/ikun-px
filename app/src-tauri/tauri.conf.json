@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "IKUN PX",
+  "version": "0.6.10",
+  "identifier": "com.ikunpx.desktop",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "IKUN PX",
+        "width": 1180,
+        "height": 780,
+        "minWidth": 860,
+        "minHeight": 620,
+        "center": true,
+        "decorations": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src ipc: http://ipc.localhost; img-src 'self' asset: http://asset.localhost data:; style-src 'self' 'unsafe-inline'; script-src 'self'",
+      "devCsp": "default-src 'self' http://localhost:1420; connect-src ipc: http://ipc.localhost ws://localhost:1420; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "resources": {
+      "resources/tun/tun2socks.exe": "tun/tun2socks.exe",
+      "resources/tun/wintun.dll": "tun/wintun.dll",
+      "resources/tun/LICENSE-tun2socks.txt": "tun/LICENSE-tun2socks.txt",
+      "resources/tun/LICENSE-wintun.txt": "tun/LICENSE-wintun.txt"
+    },
+    "icon": [
+      "icons/32x32.png",
+      "icons/64x64.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "source": "authorized local-client static analysis; no live credentials",
+  "transport": "tcp",
+  "outer": {
+    "requestLine": "POST {happy_life}={128 random a-y bytes} HTTP/1.1",
+    "host": "{happy_wife}",
+    "responseHeaderTerminator": "\\r\\n\\r\\n"
+  },
+  "sessionPrefix": {
+    "shape": "token + ':' + random a-y bytes",
+    "length": 60,
+    "xorByteIndex": 1,
+    "xorValue": 255
+  },
+  "shadowsocks": {
+    "method": "chacha20-ietf-poly1305",
+    "password": "password",
+    "saltLength": 32,
+    "outboundSaltXorByteIndex": 0,
+    "outboundSaltXorValue": 255,
+    "subkeyKdf": "HKDF-SHA1",
+    "subkeyInfo": "ss-subkey",
+    "nonceLength": 12,
+    "nonceOrder": "little-endian",
+    "tagLength": 16,
+    "maxChunk": 16383,
+    "destination": "ATYP || ADDR || PORT_BE"
+  }
+}

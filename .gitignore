@@ -1,0 +1,20 @@
+# API captures contain the account token and must never be committed.
+/captures/
+
+# Reverse-engineering outputs (keep the reusable scripts themselves).
+/re/*.bin
+/re/*.b64
+/re/nodelist.json
+/re/bootstrap.json
+/re/hits.json
+/re/cand_exact.txt
+/re/strings_all.txt
+/re/linktest/
+/.webview-debug/
+/.webview-independent/
+/.webview-menu/
+/.webview-font-check/
+
+# Local backups and logs.
+*.bak-ikunpx
+*.log

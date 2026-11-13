@@ -1,0 +1,292 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  color-scheme: light;
+
+  --radius: 0.8125rem;
+
+  --background: #f4f5fa;
+  --foreground: #191b2a;
+
+  --card: rgba(255, 255, 255, 0.78);
+  --card-foreground: #2b2e40;
+
+  --popover: #ffffff;
+  --popover-foreground: #191b2a;
+
+  --primary: #6a4bf0;
+  --primary-foreground: #ffffff;
+
+  --secondary: rgba(21, 23, 44, 0.045);
+  --secondary-foreground: #3c4055;
+
+  --muted: rgba(21, 23, 44, 0.04);
+  --muted-foreground: #6a6f88;
+
+  --accent: rgba(106, 75, 240, 0.1);
+  --accent-foreground: #5334db;
+
+  --destructive: #d8304f;
+  --destructive-foreground: #a81338;
+
+  --border: rgba(21, 23, 44, 0.1);
+  --input: rgba(21, 23, 44, 0.12);
+  --ring: #7f6cff;
+
+  --sidebar: rgba(255, 255, 255, 0.8);
+  --sidebar-foreground: #585d75;
+  --sidebar-primary: #6a4bf0;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(106, 75, 240, 0.14);
+  --sidebar-accent-foreground: #3f2ba8;
+  --sidebar-border: rgba(21, 23, 44, 0.09);
+  --sidebar-ring: #7f6cff;
+
+  --online: #12a36a;
+  --online-foreground: #0c7d51;
+  --neon: #6a4bf0;
+  --neon-soft: #7a5cf5;
+  --amber: #a9721a;
+
+  /* Layered fills that replace ad-hoc translucent whites. */
+  --surface-1: rgba(21, 23, 44, 0.028);
+  --surface-2: rgba(21, 23, 44, 0.05);
+  --surface-3: rgba(21, 23, 44, 0.075);
+  --hairline: rgba(21, 23, 44, 0.06);
+
+  --eyebrow: #8b80ad;
+  --titlebar: rgba(255, 255, 255, 0.86);
+  --page-glow: rgba(106, 75, 240, 0.1);
+
+  /* Halo behind the connect dial. Kept off box-shadow so it can be animated
+     on a compositor layer instead of repainting every frame. */
+  --glow-neon: rgba(106, 75, 240, 0.42);
+  --glow-online: rgba(18, 163, 106, 0.5);
+
+  --chart-1: #6a4bf0;
+  --chart-2: #12a36a;
+  --chart-3: #c08421;
+  --chart-4: #7a5cf5;
+  --chart-5: #16a085;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: #090b14;
+  --foreground: #edf0ff;
+
+  --card: rgba(255, 255, 255, 0.026);
+  --card-foreground: #daddea;
+
+  --popover: #12131f;
+  --popover-foreground: #edf0ff;
+
+  --primary: #7957f3;
+  --primary-foreground: #ffffff;
+
+  --secondary: rgba(255, 255, 255, 0.035);
+  --secondary-foreground: #c8ccdc;
+
+  --muted: rgba(255, 255, 255, 0.03);
+  --muted-foreground: #868ba3;
+
+  --accent: rgba(113, 87, 255, 0.14);
+  --accent-foreground: #bcb2fc;
+
+  --destructive: #ff6c80;
+  --destructive-foreground: #ffb6c0;
+
+  --border: rgba(255, 255, 255, 0.07);
+  --input: rgba(255, 255, 255, 0.075);
+  --ring: #7f6cff;
+
+  --sidebar: rgba(10, 12, 22, 0.92);
+  --sidebar-foreground: #8f94aa;
+  --sidebar-primary: #8872ff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(113, 87, 255, 0.2);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.07);
+  --sidebar-ring: #7f6cff;
+
+  --online: #4ee8a0;
+  --online-foreground: #78efb5;
+  --neon: #8d78ff;
+  --neon-soft: #ac9eff;
+  --amber: #f0c676;
+
+  --surface-1: rgba(255, 255, 255, 0.024);
+  --surface-2: rgba(255, 255, 255, 0.045);
+  --surface-3: rgba(255, 255, 255, 0.07);
+  --hairline: rgba(255, 255, 255, 0.05);
+
+  --eyebrow: #6f658f;
+  --titlebar: rgba(11, 13, 23, 0.86);
+  --page-glow: rgba(101, 78, 255, 0.11);
+
+  --glow-neon: rgba(104, 79, 235, 0.55);
+  --glow-online: rgba(55, 213, 143, 0.62);
+
+  --chart-1: #7957f3;
+  --chart-2: #4ee8a0;
+  --chart-3: #f0c676;
+  --chart-4: #8d78ff;
+  --chart-5: #69dfbb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-online: var(--online);
+  --color-online-foreground: var(--online-foreground);
+  --color-neon: var(--neon);
+  --color-neon-soft: var(--neon-soft);
+  --color-amber: var(--amber);
+
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-hairline: var(--hairline);
+  --color-eyebrow: var(--eyebrow);
+  --color-titlebar: var(--titlebar);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans:
+    "Geist Variable", Inter, "Segoe UI", "Microsoft YaHei UI", system-ui,
+    -apple-system, sans-serif;
+  --font-mono: "Cascadia Code", ui-monospace, SFMono-Regular, monospace;
+  --font-heading: var(--font-sans);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    @apply font-sans;
+  }
+
+  body {
+    @apply font-sans bg-background text-foreground;
+    min-width: 860px;
+    margin: 0;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(
+      circle at 82% 5%,
+      var(--page-glow),
+      transparent 27%
+    );
+    background-attachment: fixed;
+    overflow: hidden;
+  }
+
+  /* Window chrome must not be selectable, but page content still should be so
+     node addresses and log entries can be copied. */
+  [data-tauri-drag-region] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+@utility glass-panel {
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+}
+
+/* Dashing the power glyph reads as current running through it while the
+   runtime works. Both stroke properties inherit, so animating the <svg>
+   carries down to every path inside it. */
+@utility power-charging {
+  stroke-dasharray: 5 3;
+  animation: power-flow 0.9s linear infinite;
+}
+
+@utility power-draining {
+  stroke-dasharray: 5 3;
+  animation: power-flow 0.9s linear infinite reverse;
+}
+
+@keyframes power-flow {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+@keyframes online-pulse {
+  50% {
+    box-shadow: 0 0 0 8px transparent;
+  }
+}
+
+/* The dial runs several looping animations, so honour the OS setting rather
+   than leaving motion-sensitive users with a permanently moving screen. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
